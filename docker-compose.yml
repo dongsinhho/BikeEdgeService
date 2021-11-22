@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  postlocation:
+    build: ./service1/
+    # dockerfile: ./service1/dockerfile
+    container_name: service_location
+    command: python service1.py
+    restart: on-failure
+  listenwebsocket:
+    build: ./service2/
+    # dockerfile: ./service1/dockerfile
+    container_name: service_keylock
+    command: python service2.py
+    restart: on-failure
+    
