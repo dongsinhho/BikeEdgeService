@@ -1,9 +1,8 @@
 import requests
-import random
+import random,sys
 from time import sleep
 
-id = 1
-URL_API = "http://127.0.0.1:8000/api/bikes/{}/".format(id)
+URL_API = "http://{}/api/bikes/{}/".format(sys.argv[1],sys.argv[2])
 
 def SendData():
     while True:

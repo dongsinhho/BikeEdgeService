@@ -1,10 +1,10 @@
 import websocket
-import json
+import json, sys
 
 global mode
 mode = False
-id = 16
-URL_socket = "ws://172.17.0.1:8000/ws/edge/"
+id = sys.argv[2]
+URL_socket = "ws://{}/ws/edge/".format(sys.argv[1])
 
 def on_message(ws, message):   #nhận dữ liệu từ websocket báo là khoá xe đã đóng thì thay đổi chế độ
     messages = json.loads(message)

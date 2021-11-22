@@ -3,20 +3,14 @@ version: '3'
 services:
   postlocation:
     build: ./service1/
-    # dockerfile: ./service1/dockerfile
     container_name: service_location
-    command: python service1.py
+    command: python3 service1.py ${SERVER_URL?} ${BIKE_ID}
     restart: on-failure
-    networks:
-    - mynetwork
+    network_mode: host
   listenwebsocket:
     build: ./service2/
-    # dockerfile: ./service1/dockerfile
     container_name: service_keylock
-    command: python service2.py
+    command: python3 service2.py ${SERVER_URL?} ${BIKE_ID}
     restart: on-failure
-    networks:
-    - mynetwork
-networks:
-  mynetwork:
-    driver: bridge
+    network_mode: host
+#docker-compose --env-file ./config/.env up
